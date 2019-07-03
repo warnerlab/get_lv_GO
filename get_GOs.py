@@ -28,11 +28,10 @@ for line in infile:
 #### TO DO
 ####
 
-#1. Read in the ID mapping file
-#2. Compare the SPUIDs to that file to get the Uniprot ID, skip IDs that don't have an SPU association
-#3. Download flat file of Uniprot
-#4. Extract GO terms and descriptions of the flat file
-#5. Write it all out
+#1. Read in SPUID to GO file
+#2. Compare the SPUIDs to that file to get GO terms
+#3. Parse the GO terms
+#4. Write it all out
 
 
 
