@@ -5,9 +5,6 @@ spu2GO<- read.table(file = "GO_mappings.txt", sep='\t', quote="", header=T)
 spu2GO <- spu2GO[c(1,2)]
 colnames(spu2GO) <- c("SPU.ID","GO")
 
-#empty line left by our python script
-spu2GO <- spu2GO[-c(1),]
-
 library(plyr)
 library(topGO)
 meta_GO <- merge(master, spu2GO, by.x = "SPU.ID",by.y = "SPU.ID", all.x = TRUE)
@@ -18,7 +15,8 @@ meta_GO_Bkg <- meta_GO[c(1,81)]
 meta_GO_Bkg[meta_GO_Bkg==""]<-NA
 meta_GO_Bkg <- meta_GO_Bkg[complete.cases(meta_GO_Bkg),]
 
-#apparently our python script had a bug that duplicated things. this is a work around:
+#apparently our python script didn't accomodate the fact that different transripts would have that same SPUIDs 
+#this is a work around:
 meta_GO_Bkg <- unique(meta_GO_Bkg)
 
 
